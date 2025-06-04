@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'https://c343312cec644926a67ac35eafcca89d--5000.ap-shanghai.cloudstudio.club';
+export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://default-api-url.com';
 
 export const fetchExtensions = async (query) => {
   const response = await fetch(`${API_BASE_URL}/crx?q=${encodeURIComponent(query)}`);
