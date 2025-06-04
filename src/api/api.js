@@ -1,4 +1,4 @@
-export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://default-api-url.com';
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://default-api-url.com';
 
 export const fetchExtensions = async (query) => {
   const response = await fetch(`${API_BASE_URL}/crx?q=${encodeURIComponent(query)}`);
