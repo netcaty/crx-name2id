@@ -92,7 +92,7 @@ const Index = () => {
             <Input 
               ref={searchInputRef}
               className="pl-12 pr-4 py-6 text-lg rounded-full shadow-lg text-black"
-              placeholder="搜索扩展程序 (/)"
+              placeholder="搜索扩展程序"
             />
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-500" />
           </form>
