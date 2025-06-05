@@ -7,19 +7,18 @@ import { devHtmlTransformer, prodHtmlTransformer } from '@meituan-nocode/vite-pl
 import react from '@vitejs/plugin-react';
 
 const isProdEnv = process.env.NODE_ENV === 'production';
-const CHAT_VARIABLE = process.env.CHAT_VARIABLE || '';
-const PUBLIC_PATH = isProdEnv ? process.env.PUBLIC_PATH + '/' + CHAT_VARIABLE : process.env.PUBLIC_PATH;
-const OUT_DIR = isProdEnv ? 'build/' + CHAT_VARIABLE : 'build';
+const PUBLIC_PATH = isProdEnv ? process.env.PUBLIC_PATH + '/' + process.env.CHAT_VARIABLE : process.env.PUBLIC_PATH;
+const OUT_DIR = isProdEnv ? 'build/' + process.env.CHAT_VARIABLE : 'build';
 const PLUGINS = isProdEnv ? [
   react(),
-  prodHtmlTransformer(CHAT_VARIABLE)
+  prodHtmlTransformer(process.env.CHAT_VARIABLE)
 ] : [
   devLogger({
     dirname: resolve(tmpdir(), '.nocode-dev-logs'),
     maxFiles: '3d',
   }),
   react(),
-  devHtmlTransformer(CHAT_VARIABLE),
+  devHtmlTransformer(process.env.CHAT_VARIABLE),
 ];
 
 // https://vitejs.dev/config/
