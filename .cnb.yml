@@ -9,3 +9,17 @@ main:
             auth_type: https
             username: ${GITHUB_USER}
             password: ${GITHUB_TOKEN}
+
+$:
+  # vscode 事件：专供页面中启动远程开发用
+  vscode:
+    - docker:
+        # 自定义镜像作为开发环境
+        build:
+          dockerfile: .ide/Dockerfile
+      services:
+        - vscode
+        - docker
+      stages:
+        - name: node info
+          script: node -v && npm -v
