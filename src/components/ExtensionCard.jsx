@@ -1,13 +1,14 @@
 import { Star, Download, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import React from "react";
 
-export const ExtensionCard = ({ extension }) => {
+export const ExtensionCard = React.forwardRef(({ extension }, ref) => {
   const handleDownload = () => {
     window.location.href = `https://chromewebstore.google.com/detail/${extension.crx_id}`;
   };
 
   return (
-    <div className="border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+    <div ref={ref} className="border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
       <div className="p-4">
         <div className="flex items-start gap-4">
           <img 
@@ -21,7 +22,7 @@ export const ExtensionCard = ({ extension }) => {
             </div>
             <p 
               className="text-sm text-gray-600 mt-1 line-clamp-2" 
-              title={extension.crx_description} // 添加 title 属性
+              title={extension.crx_description}
             >
               {extension.crx_description}
             </p>
@@ -39,4 +40,4 @@ export const ExtensionCard = ({ extension }) => {
       </div>
     </div>
   );
-};
+});

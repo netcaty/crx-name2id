@@ -6,9 +6,9 @@ const switchToBackupApi = () => {
   API_BASE_URL = BACKUP_API_BASE_URL;
 };
 
-export const fetchExtensions = async (query) => {
+export const fetchExtensions = async (query, page) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/crx?q=${encodeURIComponent(query)}`);
+    const response = await fetch(`${API_BASE_URL}/crx?q=${encodeURIComponent(query)}&page=${page}`);
     if (!response.ok) {
       throw new Error('获取扩展数据失败');
     }
@@ -16,7 +16,7 @@ export const fetchExtensions = async (query) => {
   } catch (error) {
     console.error(error.message);
     switchToBackupApi();
-    const response = await fetch(`${API_BASE_URL}/crx?q=${encodeURIComponent(query)}`);
+    const response = await fetch(`${API_BASE_URL}/crx?q=${encodeURIComponent(query)}&page=${page}`);
     if (!response.ok) {
       throw new Error('备环境获取扩展数据失败');
     }
